@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Student Grade Calculator</h1>
+        <p class="subtitle">Enter marks (0 - 100)</p>
+
+        <form id="gradeForm">
+
+            <div class="input-group">
+                <label>Data Structures & Algorithms</label>
+                <input type="number" id="dsa" min="0" max="100" required>
+                <small class="error" id="dsaError"></small>
+            </div>
+
+            <div class="input-group">
+                <label>Object Oriented Programming</label>
+                <input type="number" id="oop" min="0" max="100" required>
+                <small class="error" id="oopError"></small>
+            </div>
+
+            <div class="input-group">
+                <label>Software Engineering & Modeling</label>
+                <input type="number" id="sem" min="0" max="100" required>
+                <small class="error" id="semError"></small>
+            </div>
+
+            <div class="input-group">
+                <label>Database Management Systems</label>
+                <input type="number" id="dbms" min="0" max="100" required>
+                <small class="error" id="dbmsError"></small>
+            </div>
+
+            <div class="input-group">
+                <label>Operating Systems</label>
+                <input type="number" id="os" min="0" max="100" required>
+                <small class="error" id="osError"></small>
+            </div>
+
+            <button type="button" onclick="calculateGrade()">Calculate Grade</button>
+
+        </form>
+
+        <div id="result" class="result-box"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
