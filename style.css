@@ -15,9 +15,10 @@ body {
 
 .container {
     background: linear-gradient(135deg, #667eea, #764ba2);
-    padding: 35px;
+    padding: 30px 35px;
     border-radius: 20px;
-    width: 480px;
+    width: 90%;
+    max-width: 700px;
     color: white;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     animation: fadeIn 0.8s ease-in-out;
@@ -45,8 +46,28 @@ h1 {
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
+
+.credentials-row,
+.subjects-row {
+    display: flex;
+    gap: 16px;
+}
+
+.credentials-row .input-group,
+.subjects-row .input-group {
+    flex: 1;
+}
+
+@media (max-width: 540px) {
+    .credentials-row,
+    .subjects-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
 
 label {
     font-weight: 500;
