@@ -1,3 +1,12 @@
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 function validateInput(value, errorId) {
     if (value === "" || value < 0 || value > 100) {
         document.getElementById(errorId).innerText =
@@ -69,22 +78,25 @@ function calculateGrade() {
 
     var resultBox = document.getElementById("result");
     resultBox.style.display = "block";
+    resultBox.style.background = "";
 
+    var gradeBadgeClass;
     if (grade === "A") {
-        resultBox.style.background = "#28a745";
+        gradeBadgeClass = "grade-badge grade-badge-a";
     } else if (grade === "B") {
-        resultBox.style.background = "#17a2b8";
+        gradeBadgeClass = "grade-badge grade-badge-b";
     } else if (grade === "C" || grade === "D") {
-        resultBox.style.background = "#ffc107";
+        gradeBadgeClass = "grade-badge grade-badge-cd";
     } else {
-        resultBox.style.background = "#dc3545";
+        gradeBadgeClass = "grade-badge grade-badge-ef";
     }
 
     resultBox.innerHTML =
-        "Student Name: " + name +
-        "<br>Roll Number: " + roll +
-        "<br>Academic Year: " + year +
-        "<br>Total Marks: " + total + " / 500" +
-        "<br>Percentage: " + percentage.toFixed(2) + "%" +
-        "<br>Final Grade: " + grade;
+        '<h3 class="report-heading">Grade Report</h3>' +
+        '<div class="report-row"><span class="report-label">Student Name</span><span class="report-value">' + escapeHtml(name) + '</span></div>' +
+        '<div class="report-row"><span class="report-label">Roll Number</span><span class="report-value">' + escapeHtml(roll) + '</span></div>' +
+        '<div class="report-row"><span class="report-label">Academic Year</span><span class="report-value">' + escapeHtml(year) + '</span></div>' +
+        '<div class="report-row"><span class="report-label">Total Marks</span><span class="report-value">' + total + ' / 500</span></div>' +
+        '<div class="report-row"><span class="report-label">Percentage</span><span class="report-value percentage-value">' + percentage.toFixed(2) + '%</span></div>' +
+        '<div class="report-row"><span class="report-label">Final Grade</span><span class="' + gradeBadgeClass + '">' + escapeHtml(grade) + '</span></div>';
 }
